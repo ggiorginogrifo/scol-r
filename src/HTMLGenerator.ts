@@ -11,9 +11,9 @@ export function HTMLGenerator(props: HTMLGeneratorProps) {
             <title>SCO local endpoint</title>
             <meta charset="UTF-8"/>
             <script>var exports = {};</script>
-            <script type="text/javascript" src="${libPath}/SCORMAdapter.js"></script>
-            <script type="text/javascript" src="${libPath}/MessageHandler.js"></script>
-            <script type="text/javascript" src="${libPath}/loadContent.js"></script>
+            <script type="text/javascript" src="${libPath}/SCORMAdapter.js" />
+            <script type="text/javascript" src="${libPath}/MessageHandler.js" />
+            <script type="text/javascript" src="${libPath}/loadContent.js" />
             <style type="text/css">
                 html, body { margin: 0; padding:0; overflow:hidden; width: 100%; height: 100%; }
                 body {
@@ -63,7 +63,7 @@ export function HTMLGenerator(props: HTMLGeneratorProps) {
                     This content is loaded via <a href="https://github.com/Didask/scol-r" target="_blank">SCOL-R</a>, a cross-domain SCORM connector created by <a href="https://www.didask.com" target="_blank">Didask</a>.
                 </div></div>
             </div>
-            <div id="runtime-error"></div>
+            <div id="runtime-error" />
         </body>
     </html>`;
 }

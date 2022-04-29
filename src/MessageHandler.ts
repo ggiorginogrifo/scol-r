@@ -27,14 +27,31 @@ export function MessageReceiver(
     }.bind(this)
   );
 
+
+  this.callCommit = function () {
+    // Intentionally empty
+  };
+
+
   this.commit = function () {
     adapter.LMSCommit();
   };
+
+  this.finish = function () {
+    adapter.LMSTerminate();
+  }
+
+  this.getAPI = function () {
+    new MessageEmitter("http://forma.lms").setAPI(adapter._API);
+  }
 
   this.setTitle = function (title: string) {
     document.title = title;
   };
 
+  this.setExitType = function (exitType: string) {
+    adapter.setExitType(exitType);
+  };
   this.setScore = function (score: string) {
     adapter.setScore(score);
   };
@@ -66,14 +83,15 @@ export class MessageEmitter {
   private currentWindow: Window;
   private lmsOrigin: string;
 
+  // @ts-ignore
   constructor(lmsOrigin: string) {
-    this.currentWindow = window.parent || window.opener;
-    this.lmsOrigin = lmsOrigin;
+    this.currentWindow = document.getElementsByTagName("iframe")[0].contentWindow;
+    this.lmsOrigin = '*';
   }
 
   private sendMessage(
     name: string,
-    values: (string[] | string | number)[]
+    values: (string[] | string | number | any)[]
   ): void {
     this.currentWindow.postMessage(
       {
@@ -82,6 +100,10 @@ export class MessageEmitter {
       },
       this.lmsOrigin
     );
+  }
+
+  setAPI(API: any): void {
+    this.sendMessage('setAPI', [API]);
   }
 
   setLessonStatus(status: string): void {

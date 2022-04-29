@@ -27,13 +27,13 @@ export class SCORMAdapter {
     if (typeof window === "undefined") {
       console.error("Unable to find an API adapter");
     } else {
-      let theAPI = this._findAPIInWindow(window as unknown as ApiWindow);
+      let theAPI = SCORMAdapter._findAPIInWindow(window as unknown as ApiWindow);
       if (
         theAPI == null &&
         window.opener != null &&
         typeof window.opener != "undefined"
       ) {
-        theAPI = this._findAPIInWindow(window.opener);
+        theAPI = SCORMAdapter._findAPIInWindow(window.opener);
       }
       if (theAPI == null) {
         console.error("Unable to find an API adapter");
@@ -52,7 +52,7 @@ export class SCORMAdapter {
     }
   }
 
-  private _findAPIInWindow(win: ApiWindow) {
+  private static _findAPIInWindow(win: ApiWindow) {
     let findAPITries = 0;
     while (
       win.API == null &&
@@ -198,8 +198,7 @@ export class SCORMAdapter {
     const CMIVariableName = this._isSCORM2004
       ? "cmi.score.raw"
       : "cmi.core.score.raw";
-    let score = this.LMSGetValue(CMIVariableName);
-    return score;
+    return this.LMSGetValue(CMIVariableName);
   }
 
   getLessonStatus() {
@@ -257,7 +256,9 @@ export class SCORMAdapter {
 
     this.LMSSetValue(CMIVariableName, duration);
   }
-
+  setExitType(exitType: string) {
+    this.LMSSetValue("cmi.core.exit", exitType);
+  };
   get objectivesAreAvailable() {
     return this.LMSGetValue("cmi.objectives._children") !== null;
   }
@@ -328,5 +329,12 @@ export class SCORMAdapter {
   }
   get suspendData() {
     return this.LMSGetValue("cmi.suspend_data");
+  }
+
+  setLessonMode(data: string) {
+    this.LMSSetValue("cmi.suspend_data", data);
+  }
+  get LessonMode() {
+    return this.LMSGetValue("cmi.core.lesson_mode");
   }
 }

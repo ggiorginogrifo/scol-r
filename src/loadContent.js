@@ -97,6 +97,9 @@ function loadContent() {
     displayInitError("couldNotInitialize");
     return;
   }
+
+  //TODO: aggiungere ottenimento lesson mode
+  //TODO: aggiungere controllo se lesson mode non è review
   var lessonStatus = ADAPTER.getLessonStatus();
   if (lessonStatus === "not attempted") {
     ADAPTER.setLessonStatus("incomplete");
@@ -133,8 +136,6 @@ function loadContent() {
   iframe.setAttribute("width", "100%");
   document.body.insertBefore(iframe, document.getElementById("wrapper"));
 
-  var sessionStart = new Date();
-
   var host = sourceUrlParser.host;
   // The `host` variable may or may not contain the port number depending on the browser.
   // We remove it if it wasnt' explicitly set.
@@ -145,9 +146,10 @@ function loadContent() {
     host = host.slice(0, host.indexOf(":"));
   }
   var sourceOrigin = sourceUrlParser.protocol + "//" + host;
+
   new MessageReceiver(window, sourceOrigin, ADAPTER);
 
-  window.addEventListener("beforeunload", function (e) {
+  window.addEventListener("beforeunload", function () {
     ADAPTER.LMSTerminate();
   });
 }

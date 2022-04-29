@@ -4,7 +4,7 @@ SCOL-R (Shareable Cross Origin Learning Resources) helps you connect pedagogical
 
 To get started:
 
-- Set the remote content's URL in the `body`'s `data-source` attribute in [index.html](index.html#L13).
+- Set the remote content's URL in the `body`'s `data-source` attribute in [index.html](index.html).
 - Edit [imsmanifest.xml](imsmanifest.xml) to edit the course title and identifier, as well as the metadata.
 - Compile everything (except the README file) in a zip file and upload it to your LMS.
 
