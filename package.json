@@ -8,7 +8,7 @@
     "lib/"
   ],
   "scripts": {
-    "build": "tsc"
+    "build": "tsc && rm -rf *.zip && zip -r $(date +\"%Y-%m-%d-%H%M\").zip . -x '.git/*' 'node_modules/*' './src/*' '.idea/*'"
   },
   "repository": {
     "type": "git",
