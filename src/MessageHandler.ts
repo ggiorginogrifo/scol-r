@@ -27,6 +27,13 @@ export function MessageReceiver(
     }.bind(this)
   );
 
+  this.getValue = function (name: string) {
+    adapter.LMSGetValue(name);
+  };
+
+  this.setValue = function (name: string, value: string | number) {
+    adapter.LMSSetValue(name, value);
+  };
 
   this.callCommit = function () {
     // Intentionally empty
@@ -52,6 +59,7 @@ export function MessageReceiver(
   this.setExitType = function (exitType: string) {
     adapter.setExitType(exitType);
   };
+
   this.setScore = function (score: string) {
     adapter.setScore(score);
   };
@@ -86,7 +94,7 @@ export class MessageEmitter {
   // @ts-ignore
   constructor(lmsOrigin: string) {
     this.currentWindow = document.getElementsByTagName("iframe")[0].contentWindow;
-    this.lmsOrigin = '*';
+    this.lmsOrigin = '*'; //TODO: remove * and replace with source
   }
 
   private sendMessage(
