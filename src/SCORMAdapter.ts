@@ -332,7 +332,7 @@ export class SCORMAdapter {
   }
 
   setLessonMode(data: string) {
-    this.LMSSetValue("cmi.suspend_data", data);
+    this.LMSSetValue("cmi.lesson_mode", data);
   }
   get LessonMode() {
     return this.LMSGetValue("cmi.core.lesson_mode");

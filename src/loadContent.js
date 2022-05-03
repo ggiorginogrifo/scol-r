@@ -127,7 +127,12 @@ function loadContent() {
     "&lms_origin=" +
     encodeURIComponent(location.origin) +
     "&data_from_lms=" +
-    ADAPTER.getDataFromLMS();
+    ADAPTER.getDataFromLMS() +
+    "&cmi.suspend_data=" +
+    ADAPTER.suspendData +
+    "&cmi.core.lesson_status=" +
+    ADAPTER.getLessonStatus()
+  ;
 
   var iframe = document.createElement("iframe");
   iframe.setAttribute("src", sourceUrlParser.href);

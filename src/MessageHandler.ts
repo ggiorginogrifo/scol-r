@@ -27,9 +27,6 @@ export function MessageReceiver(
     }.bind(this)
   );
 
-  this.getValue = function (name: string) {
-    adapter.LMSGetValue(name);
-  };
 
   this.setValue = function (name: string, value: string | number) {
     adapter.LMSSetValue(name, value);
@@ -46,10 +43,6 @@ export function MessageReceiver(
 
   this.finish = function () {
     adapter.LMSTerminate();
-  }
-
-  this.getAPI = function () {
-    new MessageEmitter("http://forma.lms").setAPI(adapter._API);
   }
 
   this.setTitle = function (title: string) {
@@ -90,7 +83,6 @@ export function MessageReceiver(
 export class MessageEmitter {
   private currentWindow: Window;
   private lmsOrigin: string;
-
   // @ts-ignore
   constructor(lmsOrigin: string) {
     this.currentWindow = document.getElementsByTagName("iframe")[0].contentWindow;
