@@ -131,7 +131,9 @@ function loadContent() {
     "&cmi.suspend_data=" +
     ADAPTER.suspendData +
     "&cmi.core.lesson_status=" +
-    ADAPTER.getLessonStatus()
+    ADAPTER.getLessonStatus() +
+    "&cmi.core.lesson_mode=" +
+    ADAPTER.lessonMode
   ;
 
   var iframe = document.createElement("iframe");
@@ -154,7 +156,4 @@ function loadContent() {
 
   new MessageReceiver(window, sourceOrigin, ADAPTER);
 
-  window.addEventListener("beforeunload", function () {
-    ADAPTER.LMSTerminate();
-  });
 }
