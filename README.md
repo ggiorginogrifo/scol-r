@@ -3,10 +3,11 @@
 SCOL-R (Shareable Cross Origin Learning Resources) helps you connect pedagogical content with an LMS through the SCORM API even when the two are on different domains.
 
 To get started:
-
+- Copy files `index.html.sample` into `index.html` 
 - Set the remote content's URL in the `body`'s `data-source` attribute in [index.html](index.html).
+- Copy files `imsmanifest.xml.sample` into `imsmanifest.xml` 
 - Edit [imsmanifest.xml](imsmanifest.xml) to edit the course title and identifier, as well as the metadata.
-- Compile everything (except the README file) in a zip file and upload it to your LMS.
+- Compile everything (except the README file) in a zip file and upload it to your LMS. You can use also package.json script `npm run build` 
 
 The SCORM Adapter intends to be compatible with SCORM versions 1.2 and 2004, hopefully with more to come.
 The version should be specified in the manifest's `schemaversion` metadata attribute.
