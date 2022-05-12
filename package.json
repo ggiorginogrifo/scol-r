@@ -8,7 +8,10 @@
     "lib/"
   ],
   "scripts": {
-    "build": "tsc && rm -rf *.zip && zip -r $(date +\"%Y-%m-%d-%H%M\").zip . -x '.git/*' 'node_modules/*' './src/*' '.idea/*'"
+    "transpile": "tsc",
+    "obfuscate-minify-code": "gulp compress",
+    "create-zip": "gulp createZip",
+    "create-production-wrapper": "npm run transpile && npm run obfuscate-minify-code && npm run create-zip"
   },
   "repository": {
     "type": "git",
@@ -25,7 +28,9 @@
   },
   "homepage": "https://github.com/Didask/scol-r",
   "devDependencies": {
+    "adm-zip": "^0.5.9",
     "gulp": "^4.0.2",
+    "vinyl-sourcemaps-apply": "^0.2.1",
     "gulp-javascript-obfuscator": "^1.1.6",
     "husky": "3.1.0",
     "readable-stream": "^3.6.0",
@@ -33,7 +38,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "tsc -p ./tsconfig.json && gulp compress"
+      "pre-commit": "tsc -p ./tsconfig.json"
     }
   }
 }
