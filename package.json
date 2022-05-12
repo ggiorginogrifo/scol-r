@@ -25,12 +25,15 @@
   },
   "homepage": "https://github.com/Didask/scol-r",
   "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-javascript-obfuscator": "^1.1.6",
     "husky": "3.1.0",
+    "readable-stream": "^3.6.0",
     "typescript": "4.3.4"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "tsc -p ./tsconfig.json"
+      "pre-commit": "tsc -p ./tsconfig.json && gulp compress"
     }
   }
 }
