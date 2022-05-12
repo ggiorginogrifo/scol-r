@@ -7,10 +7,13 @@ To get started:
 - Set the remote content's URL in the `body`'s `data-source` attribute in [index.html](index.html).
 - Copy files `imsmanifest.xml.sample` into `imsmanifest.xml` 
 - Edit [imsmanifest.xml](imsmanifest.xml) to edit the course title and identifier, as well as the metadata.
-- Compile everything (except the README file) in a zip file and upload it to your LMS. You can use also package.json script `npm run build` 
+- Compile everything (except the README file) in a zip file and upload it to your LMS. You can use also package.json script `npm run create-production-wrapper` 
 
 The SCORM Adapter intends to be compatible with SCORM versions 1.2 and 2004, hopefully with more to come.
 The version should be specified in the manifest's `schemaversion` metadata attribute.
+
+# Build a scorm package
+Run `npm run create-production-wrapper` and copy 
 
 ----
 v1.0.0 :
