@@ -46,9 +46,9 @@ function createDateInHumanReadableWay() {
     const hours = date_ob.getHours();
     const minutes = date_ob.getMinutes();
     const seconds = date_ob.getSeconds();
-
-    return year + "-" + month + "-" + day + " " + hours + "_" + minutes + "_" + seconds
+  return year + "-" + month + "-" + day + " " + hours + "_" + minutes + "_" + seconds
 }
+
 
 function getCourseTitle() {
     const xmlFile = fs.readFileSync('imsmanifest.xml', 'utf8');
