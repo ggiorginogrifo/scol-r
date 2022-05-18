@@ -7,9 +7,9 @@
     <script>
       var exports = {};
     </script>
-    <script type="text/javascript" src="dist/SCORMAdapter.js"></script>
-    <script type="text/javascript" src="dist/MessageHandler.js"></script>
-    <script type="text/javascript" src="dist/loadContent.js"></script>
+    <script type="text/javascript" src="lib/SCORMAdapter.js"></script>
+    <script type="text/javascript" src="lib/MessageHandler.js"></script>
+    <script type="text/javascript" src="lib/loadContent.js"></script>
     <link rel="stylesheet" href="style.css">
   </head>
   <!-- NOTE: Set the body's data-source attribute to the SCO's remote endpoint. -->
